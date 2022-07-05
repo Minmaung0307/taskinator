@@ -1,16 +1,22 @@
 // console.dir(window.document);
 
-var buttonEl = document.querySelector("#save-task");
+// var buttonEl = document.querySelector("#save-task");
+var formEl = document.querySelector("#task-form");
 var tasksToDoEl = document.querySelector("#tasks-to-do");
 
-var createTaskHandler = function() {
+var createTaskHandler = function(event) {
+
+    event.preventDefault();
+
   var listItemEl = document.createElement("li");
   listItemEl.className = "task-item";
   listItemEl.textContent = "This is a new task.";
   tasksToDoEl.appendChild(listItemEl);
 };
 
-buttonEl.addEventListener("click", createTaskHandler);
+// buttonEl.addEventListener("click", createTaskHandler);
+formEl.addEventListener("submit", createTaskHandler);
+
 // buttonEl.addEventListener("click", function() {
 //   var listItemEl = document.createElement("li");
 //   listItemEl.className = "task-item";
@@ -73,6 +79,19 @@ dynamic way of interacting
 </ul>
 <script>
     var listEl = document.querySelector("#villains");
+    var villainInput = document.querySelector("#vallainInput");
+    var villainSubmitClick = document.querySelector("#villainSubmit");
+
+    villainSubmitClick.addEventListener("click", insertVillian);
+
+    function insertVillian(event) {
+        event.preventDefault();
+        var villainListEl = document.createElement("li");
+        villainListEl.textCont = villainInput.value;
+        villainListEl.className = "list-group-item";
+        listEl.appendChild(villainListEl);
+    }
+
     var villainListEl = document.createElement("li");
     villainListEl.textContent = "Thanos";
     viallainListEl.className = "list-group-item";
